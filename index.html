@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mewthetis</title>
+  <style>
+    /* Reset default styles */
+    body, html {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Background styling */
+    body {
+      background: linear-gradient(135deg, #f4f4f4, #d6d9dc);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      overflow: hidden;
+    }
+
+    /* Container for centered text */
+    .container h1 {
+      font-size: 3rem;
+      color: #2c3e50;
+      font-weight: 600;
+      text-transform: capitalize;
+      letter-spacing: 2px;
+      text-align: center;
+      padding: 20px 40px;
+      border: 2px solid #2c3e50;
+      border-radius: 10px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      opacity: 0; /* Initially hidden for fade-in effect */
+      animation: fadeIn 2s ease forwards, glow 1.8s ease-in-out infinite alternate;
+    }
+
+    /* Elegant glowing animation */
+    @keyframes glow {
+      from {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+      to {
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+      }
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Background particles */
+    .bubble {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0.7;
+      }
+      to {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0.2;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="text">We are coming soon...</h1>
+  </div>
+
+  <script>
+    // Add floating bubble effect
+    const createBubbles = () => {
+      const bubbleCount = 20; // Number of floating particles
+      for (let i = 0; i < bubbleCount; i++) {
+        const bubble = document.createElement('div');
+        bubble.classList.add('bubble');
+        document.body.appendChild(bubble);
+
+        // Randomize size, position, and animation delay
+        const size = Math.random() * 60 + 10 + 'px';
+        bubble.style.width = size;
+        bubble.style.height = size;
+        bubble.style.left = Math.random() * 100 + '%';
+        bubble.style.animationDelay = Math.random() * 5 + 's';
+      }
+    };
+
+    // Initialize bubbles on page load
+    window.onload = () => {
+      createBubbles();
+    };
+  </script>
+</body>
+</html>
